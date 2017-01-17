@@ -1,0 +1,1376 @@
+%% abtex2-modelo-trabalho-academico.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
+% mestrado e trabalhos monograficos em geral) em conformidade com 
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openany,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{float}
+\usepackage{epigraph}
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+%\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf,bibjustif]{abntex2cite}	% Citações padrão ABNT
+
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+%\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+%\renewcommand{\backref}{}
+% Define os textos da citação
+%\renewcommand*{\backrefalt}[4]{
+%	\ifcase #1 %
+%		Nenhuma citação no texto.%
+%	\or
+%		Citado na página #2.%
+%	\else
+%		Citado #1 vezes nas páginas #2.%
+%	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+
+
+\titulo{INGLÊS+ - UM \textit{SOFTWARE} EDUCACIONAL VOLTADO PARA O ENSINO DE LÍNGUA INGLESA USANDO \textit{FRAMEWORK DE GAMIFICATION}}
+\autor{Erick Davidson Gama Cavalcante}
+\local{Maceió}
+\data{2016}
+\orientador{Dr. Leonardo Medeiros}
+
+%\instituicao{%
+ % Instituto Federal de Alagoas - IFAL
+  %\par
+ % Coorderanção de Informática - CiNFO
+  %\par
+  %Trabalho de Conclusão de Curso}
+\tipotrabalho{Monografia (Trabalho de Conclusão de Curso)}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de Conclusão de Curso apresentado ao Curso de Bacharelado em Sistemas de Informação do Instituto Federal de Educação, Ciência e Tecnologia de Alagoas como requisito parcial para obtenção do título de bacharel em Sistemas de Informação. }
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=black,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+
+\begin{center}
+
+\textsf{\textsc{Instituto Federal de Educação, Ciência e Tecnologia de Alagoas\\
+ Campus Maceió\\
+ Coordenação de Informática \\
+ Curso Superior de Bacharelado em Sistemas de Informação 
+}} 
+
+\end{center}
+
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+
+
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \includepdf{folhadeaprovacao_final.pdf}
+%
+
+% ---
+
+% ---
+% Dedicatória
+% ---
+% --- \begin{dedicatoria}
+
+% --- \end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+
+Agradeço ao Instituto Federal de Educação, Ciência e Tecnologia de Alagoas e todo seu corpo docente que me proporcionaram as condições necessárias para que eu alcançasse meus objetivos.
+
+Ao meu orientador Leonardo Medeiros, por todo o tempo que dedicou a me ajudar durante o processo de realização deste trabalho.
+
+E enfim, a todos que contribuíram para a realização deste trabalho, seja de forma direta ou indireta, fica registrado aqui, o meu muito obrigado!
+
+\end{agradecimentos}
+
+% ---
+
+% ---
+% Epígrafe
+% ---
+ \begin{epigrafe}
+\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par\null\par
+
+\epigraph{\textit{"A educação é a arma mais poderosa que você pode usar para mudar o mundo."}}{(Nelson Mandela)}
+
+
+ \end{epigrafe}
+
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+
+
+Atualmente, uma das línguas estrangeiras mais globalizadas é a língua inglesa, que está sendo usada no mundo a um ritmo muito rápido. Com um mundo cada vez mais competitivo no mercado de trabalho, a capacidade de falar alguma língua estrangeira é esssencial para o currículo profissional das pessoas, mas às vezes a falta de tempo ou até mesmo falta de motivação pode fazer muitas pessoas ignorar esta área de importância primordial. Desta forma, o objetivo principal deste trabalho é avaliar \textit{gamification} em \textit{software} educacional para o ensino de inglês em aplicativos Android, seguindo o \textit{framework} de \textit{gamification} desenvolvido por Werbach e Hunter. E, como objetivo específico, avaliar a usabilidade da aplicação desenvolvida aplicando a \textit{system usatility scale} aos usuários. Como resultado, foi identificado que o uso de técnicas de \textit{gamification} motivam os usuários na aprendizagem de um novo idioma.
+
+
+
+
+ \textbf{Palavras-chave}: gamification. m-learning. inglês. smartphones.
+\end{resumo}
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+
+Currently, one of the most globalized foreign language is the English language, which is being used in the world at a very fast rate. With an increasingly competitive world in the labor market, the ability to speak some foreign language is essential to the people's professional curriculum, but sometimes the lack of time or even lack of motivation can make many people ignore this area of paramount importance. In this way, the main objective of this work is to evaluate gamification in educational software for teaching English in Android applications, following the gamification framework developed by Werbach and Hunter. And, as a specific objective, evaluate the usability of the developed application applying the system usability scale to the users. As a result, it has been identified that the use of gamification techniques motivate users in learning a new language.
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+
+   \textbf{Keywords}: gamification. m-learning. english. smartphones
+ \end{otherlanguage*}
+\end{resumo}
+
+
+
+
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+  \item[M-Learning] Mobile Learning
+  \item[E-Learning] Eletronic Learning
+\item [TIC] Tecnologia da Informação e Comunicação
+\item[CAPES] Coordenação de Aperfeiçoamento de Pessoal de Nível Superior
+\item [IEEE] Institute of Electric and Electronic Engineers
+\item[ACM] Association for Computing Machinery
+\item [ERIC] Education Resources Information Center
+\item [XP] Experiência
+\item [EF] Education First
+\item [INEP] Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira
+\item [IDC] International Data Corporation
+\item [SUS] System Usability Scale
+\item [HTML] HyperText Markup Language
+\item [CSS] Cascading Style Sheets
+\end{siglas}
+% ---
+
+% ---
+
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
+% ----------------------------------------------------------
+\chapter{Introdução}
+
+% ----------------------------------------------------------
+
+Atualmente, uma das línguas estrangeiras mais globalizadas é a língua inglesa, que está sendo usada no mundo num ritmo bastante acelerado. Estudos indicam que  aproximadamente um quarto da população mundial tenha algum conhecimento da língua inglesa \cite{GRIGOLETTO}.
+
+Por outro lado, a sociedade convive diariamente com inovações tecnológicas, tais mudanças são vistas por todos os lugares. A tecnologia está a cada dia expandindo-se e tornando-se mais presente na vida das pessoas. Deste modo, o conhecimento em outros idiomas é essencial para a capacitação dos futuros profissionais da sociedade.
+
+De acordo com \citeonline{BROWN} \textit{mobile leaning} (\textit{m-learning}) foi definido como uma exploração de tecnologias ubíquas à mão, juntamente com as redes sem fio (\textit{wireless}) e as redes de telefonia para facilitar, apoiar, melhorar e aumentar o alcance do ensino e da aprendizagem. Ainda segundo \citeonline{BROWN}, m-learning está em oposição com o ensino à distância ou \textit{electronic learning} (\textit{e-learning}), isto porque a aprendizagem móvel é de curta duração, instantaneamente utilizável, que permite aos usuários personalizar o conteúdo, inserir dados e gerar conteúdo.
+
+Porém, vários jovens e adultos, não possuem conhecimento dessas áreas, pois na infância, não tiveram acesso a estas tecnologias ou os professores não possuíam formação na área suficiente para repassar, o que torna o ensino de informática e idiomas ainda mais difícil.
+
+Segundo \citeonline{JUNGLES}, a informática deve ser vista como uma ferramenta primordial para a educação. Hoje, ela exerce papel de grande importância e merece ser tratada de tal forma. Contudo, para que a informática na educação possa alcançar resultados satisfatórios e suprir a necessidade que a sociedade atual exige, o novo professor deve ser um profissional com muitos atributos. Logo, seu papel é fundamental na inclusão da informática na educação.
+
+Porém, com os métodos convencionais o ensino acaba sendo um realmente desafio aos professores, pois às vezes não há motivação nos alunos para o aprendizado, alguns estão ali apenas pelo fato de estar ou estão passando o tempo em \textit{smartphones/tablets}, que poderia usar este último para melhorar o aprendizado.
+
+A utilização de métodos de \textit{gamification} para estimular o conhecimento dos usuários de aplicativos tem estimulado várias áreas de estudo, entre eles o de \textit{m-learning}, com o objetivo de melhorar o uso do pensamento do usuário a partir da mecânica de jogos, ou seja, engajando os usuários a solucionar problemas \cite{LAW}.
+ 
+	\textit{Gamification} é muita vezes uma técnica bastante utilizada no desenvolvimento de aplicativos para motivar os usuários a atingirem o propósito definido. Como por exemplo, motivar aprendizagem, perda de peso, alcançar metas empresariais e até mesmo o aprendizado de uma língua estrangeira \cite{ALVES}.
+
+Conforme citado, o método \textit{gamification} é um fenômeno emergente, que resulta diretamente da popularização e popularidade dos jogos, e de suas capacidades essenciais de motivar a ação, solucionar problemas e potencializar aprendizagens nas mais diferentes áreas do conhecimento e da vida das pessoas.
+	
+
+
+% ----------------------------------------------------------
+\section{Problema}
+% ----------------------------------------------------------
+Atualmente, no mercado de trabalho, conhecimento da língua inglesa é muito importante para o crescimento profissional, caso contrário, num futuro não tão distante, é possível que o mercado de trabalho comece a excluir pessoas sem esse conhecimento \cite{CABRAL}. Ainda segundo \citeonline{CABRAL} a língua inglesa está sendo considerada uma qualificação básica, enquanto falar uma terceira língua, torna-se um adequado diferencial competitivo. 
+
+Estudos indicam que em muitos países da União Europeia, da Ásia e da África, o ensino se desenvolve por um período relativamente longo, onde os objetivos estão explicitados e os referenciais teóricos bem constituídos. Ao contrário, na América do Sul, a expansão do ensino do inglês se expressa de maneira bastante aleatória. E em relação ao cenário educacional brasileiro, a aprendizagem do idioma se apresenta em uma teorização incipiente \cite{ROCHA}.
+
+De acordo com a \citeonline{EF}, o Brasil tem um baixo nível de conhecimento em língua inglesa, ocupando apenas o 41º lugar entre 70 países com uma nota de 51,05 pontos. A Figura 1 contém o índice de proeficiência dos países da América Latina.
+
+\begin{figure}[H]
+    \centering
+\caption{Índice de proeficiência dos países da América Latina}
+\includegraphics[width=16cm]{figuras/proeficiencia.jpg}
+\par
+ Fonte: \cite{EF}
+\end{figure}
+
+
+Desta forma, este estudo inicia-se com a seguinte pergunta: como a técnica de \textit{gamification} pode motivar a auto-aprendizagem da língua inglesa?
+
+
+% ----------------------------------------------------------
+\section{Justificativa}
+% ----------------------------------------------------------
+A sociedade atual exige que os seus cidadãos desenvolvam novas aptidões efetivas para conseguirem responder aos inúmeros desafios que lhe são apresentados. Deste modo, surgem novos cenários especificamente em contextos educativos. 
+
+Neste sentido, \citeonline{CARVALHO} cita que os dispositivos móveis, devido às suas funcionalidades, vem a ser integrados em contextos de educação e formação sendo estes encarados como novos meios para a aprendizagem formal e informal. Desta forma, esta é uma razão para identificar de qual forma as pessoas utilizam dispositivos móveis para adquirir conhecimentos de línguas estrangeiras.
+	
+Atualmente, a eficácia do ensino é questionada por não atender ao perfil dos alunos. Onde estes possuem um modelo de raciocínio distinto das gerações passadas \cite{PRENSKY2010}.  Por este motivo, as necessidades dos jovens atuais não são as mesmas das gerações passadas, o que gera efeitos consideráveis para o processo de ensino e aprendizagem \cite{PRENSKY2010}.
+	
+Hoje em dia, dispositivos móveis fazem parte da maioria da população seja jovem ou adulta, a inclusão de \textit{softwares} com mecânicas de jogos tem se tornado bem competente no auxílio a usuários solucionar dificuldades reais, fazendo assim com que o dia-a-dia seja bem mais agradável. \cite{LAW}.
+
+% ----------------------------------------------------------
+\section{Objetivos}
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+\subsection{Objetivos Gerais}
+% ----------------------------------------------------------
+Avaliar \textit{gamification} em \textit{softwares} educacionais para o ensino de língua inglesa usando \textit {framework} de \textit{gamification} de \citeonline{WERBACH}.
+
+
+% ----------------------------------------------------------
+\subsection{Objetivos Específicos}
+% ----------------------------------------------------------
+\begin{itemize}
+\item Identificar aplicativos de \textit{m-learning} para o ensino de língua inglesa;
+\item Analisar a adoção de elementos e métodos de \textit{gamification} nos aplicativos de \textit{m-learning} identificados;
+\item Elaborar um protótipo de \textit{software} educacional para o ensino de língua inglesa usando técnicas de \textit{gamification};
+\item Avaliar a motivação dos usuários com o uso das técnicas de \textit{gamification} usando o protótipo de \textit{software} elaborado.
+
+\end{itemize}
+
+
+% ----------------------------------------------------------
+\chapter{Revisão da Literatura}
+% ----------------------------------------------------------
+	Esta seção tem por objetivo discutir a evolução geral dos conceitos envolvidos na problemática do trabalho e como se interligam. Assim, as próximas seções apresentam conceitos de \textit{e-learning, m-learning e gamification}.
+
+% ----------------------------------------------------------
+\section {\itshape Eletronic Learning (e-learning)}
+% ----------------------------------------------------------
+
+De acordo com \citeonline{PRENSKY2001}, especialista em tecnologia e educação pela universidade de Yale, as crianças já nascem num mundo caracterizado pelas tecnologias e mídias digitais e teriam, portanto, seu perfil cognitivo alterado.
+
+	Ainda segundo \citeonline{PRENSKY2001}, ele diz: Como deveríamos chamar estes “novos” alunos de hoje? Muitos se referem a eles como N-gen [Net] ou D-gen [Digital]. Porém a denominação mais utilizada que eu encontrei para eles é Nativos Digitais. Nossos estudantes de hoje são todos “falantes nativos” da linguagem digital dos computadores, vídeo \textit{games} e \textit{internet}.
+
+	A tecnologia de informática e comunicação permite criar material didático usando multimídia e interatividade que tornam mais efetivos os ambientes de ensino-aprendizagem apoiados nas TICs. No entanto, o projeto e desenvolvimento desses recursos, mesmo considerando o uso de linguagens de autoração, demandam muito esforço e envolvem grandes investimentos em recursos humanos e financeiros \cite{TAROUCO}.
+
+
+
+Assim surge o ensino a distância ou \textit{eletronic learning (e-learning)} que vem para auxiliar na inclusão da informática na educação, que caracteriza-se como modalidade educacional na qual a mediação didático-pedagógica nos processos de ensino e aprendizagem ocorre com a utilização de meios e tecnologias de informação e comunicação, com estudantes e professores desenvolvendo atividades educativas em lugares ou tempos diversos.
+
+A educação a distância é uma modalidade de ensino que vem crescendo no Brasil e no mundo e tem como objetivo proporcionar uma aprendizagem ativa e autônoma, ao mesmo tempo em que facilita o acesso ao ensino superior de qualidade às pessoas que não tem condições de participar do sistema presencial.
+
+	A Figura 2  contém a evolução dos alunos matriculados no ensino a distância no Brasil a cada ano.
+
+\begin{figure}[!htb]
+    \centering
+\caption{Evolução dos alunos matriculados no ensino superior a distância}
+\includegraphics[width=13cm]{figuras/ead.png}
+\par
+ Fonte: \cite{INEP}
+\end{figure}
+
+% ----------------------------------------------------------
+\section {\itshape Mobile Learning (m-learning)}
+% ----------------------------------------------------------
+
+
+Os dispositivos móveis estão crescendo de uma forma muito rápida para oferecer a soluções ágeis e econômicas para a sociedade.
+
+Segundo relatório da pesquisa de \citeonline{FGV}, o número de aparelho de smartphones em uso no Brasil chega 168 milhões, em relação ao mesmo período do ano passado houve um aumento de 9\%, quando o número de smartphones era de 155 milhões.  Ainda segundo a pesquisa, a projeção é que em 2018, o número de smartphones chegue a 236 milhões.
+
+Estudos de \citeonline{MARCAL} indicam que o m-learning surge como uma importante alternativa de ensino e treinamento à distância, na qual podem ser destacados os seguintes objetivos:
+\begin{itemize}
+\item melhorar os recursos para o aprendizado do aluno, que poderá contar com um dispositivo computacional para execução de tarefas, anotação de ideias, consulta de informações via internet, registro de fatos através de câmera digital, gravação de sons e outras funcionalidades existentes;
+\item prover acesso aos conteúdos didáticos em qualquer lugar e a qualquer momento, de acordo com a conectividade do dispositivo;
+\item aumentar as possibilidades de acesso ao conteúdo, incrementando e incentivando a utilização dos serviços providos pela instituição, educacional ou empresarial.
+\end{itemize}
+
+É possível perceber a grande variedade de recursos e a convergência que telefones celulares e \textit{smartphones} oferecem para conjunto de possibilidades para a aprendizagem. Devido à portabilidade destes dispositivos é possível trocar informações, compartilhar ideias, experiências, resolver dúvidas, acessar uma vasta gama de recursos e materiais didáticos, incluindo texto, imagens, áudio, vídeo, notícias, conteúdos de blogs e jogos, tudo isso no exato momento em que faz necessário \cite{FERREIRA}.
+
+
+% ----------------------------------------------------------
+\section  {\itshape Gamification}
+% ----------------------------------------------------------
+
+\textit{Gamification} é definida como o uso de mecânica de jogo, dinâmica e estruturas para promover os comportamentos desejados, tem encontrado o seu caminho em domínios como o \textit{marketing}, política, saúde e \textit{fitness}. Alguns visionários, como designer de jogos Jesse Schell, imagina uma espécie de \textit{gamepocalypse}, um futuro hipotético em que tudo na vida diária torna-se gamificado, de escovar os dentes ao exercício \cite{SCHELL}.
+
+	De acordo com \citeonline{ZICHERMANN}, os mecanismos encontrados em jogos funcionam como um motor motivacional do indivíduo, contribuindo para o engajamento deste nos mais variados aspectos e ambientes.
+
+Com base no mecanismo encontrado nos jogos, \citeonline{VIANNA} diz que o conceito de motivação tem como base a articulação das experiências vividas pelos indivíduos com a proposição de novas perspectivas. Ainda segundo \citeonline{VIANNA}, \textit{gamification} tem como princípio despertar emoções positivas e explorar aptidões, ligadas a recompensas virtuais ou físicas ao se executar determinada atividade.
+
+	Estudos feito por \citeonline{ZICHERMANN} indicam que as pessoas são motivadas a jogar por quatro razões específicas:
+\begin{itemize}
+\item Para obterem o domínio de determinado assunto;
+\item Para aliviarem o \textit{stress};
+\item Como forma de entretenimento;
+\item E, como mecanismo de socialização.
+\end{itemize}
+
+	Além disso, \citeonline{ZICHERMANN} também mostra quatro diferentes tipos de diversão durante um jogo:
+\begin{itemize}
+\item Quando o jogador está concorrendo e busca a vitória;
+\item Quando está descobrindo um novo universo;
+\item Quando a forma como o jogador se sente é alterada pelo jogo;
+\item E quando o jogador se envolve com outros jogadores.
+\end{itemize}
+
+	Segundo \citeonline{ZICHERMANN} e \citeonline{WERBACH} os sete principais elementos de jogos são: pontos (\textit{points}), níveis (\textit{levels}), placar de vencedores (\textit{leaderboards}), emblemas (\textit{badges}), desafios ou missões (\textit{challenges}), loops de integração (\textit{onboarding}) e engajamento (\textit{engagement loops}). 
+
+	Qanto ao perfil dos jogadores, é possível utilizar as reflexões de \citeonline{BARTLE}, que estudou o comportamento de jogadores em antigos jogos massivos \textit{online}. Esses estudos tratam de reconhecer os possíveis diferentes comportamentos que o jogador pode ter em um jogo enquanto o mesmo lhe oferece uma liberdade restrita.  Dessa forma, \citeonline{BARTLE} desenvolveu um gráfico, que mostra os interesses dos jogadores, onde o eixo X mostra as mudanças de interesse nos outros participantes (\textit{players}), até o mundo fictício (\textit{world}), e o eixo Y mostra aqueles que escolhem a ação (\textit{acting}) até aqueles que escolhem interagir (\textit{interacting}) como mostra na Figura 3.
+
+\begin{figure}[!htb]
+    \centering
+\caption{Gráfico de jogadores}
+\includegraphics[width=13cm]{figuras/bartle.png}
+\par
+ Fonte: adaptado de \citeonline{BARTLE}
+\end{figure}
+
+Esses diferentes comportamentos possíveis forma quatro grupos de jogadores:
+
+\begin{itemize}
+\item Conquistadores (\textit{Achiever}): que são competidores, esperando atingir os objetivos do jogo e serem reconhecidos por isso;
+\item Exploradores (\textit{Explorer}): que esperam interação com o mundo virtual do jogo e as suas possibilidades, desejando a surpresa da novidade através da descoberta de novos lugares, criaturas e objetos;
+\item Socializadores (\textit{Socializer}): que gostam de se relacionar com os outros jogadores, fazendo parte de equipes e sendo ativos em grupos enquanto privilegiam a experiência social em prol das conquistas no jogo.
+\item E assassinos (\textit{Killer}): que gostam de se impor para os outros jogadores, mostrando energia, e até violência, com o objetivo de demonstrar a sua superioridade dentro do mundo virtual.
+\end{itemize}
+
+% ----------------------------------------------------------
+\subsection  {Elementos de jogos de \itshape Gamification}
+% ----------------------------------------------------------
+
+Segundo estudos de \citeonline{WERBACH} há três tipos de elementos de jogos (dinâmicas, mecânicas e componentes) no qual se baseia os estudos e desenvolvimento de \textit{gamification}. A pirâmide na Figura 4 contém estes elementos.
+
+\begin{figure}[!htb]
+    \centering
+\caption{Elementos de \textit{Gamification}}
+\includegraphics[width=15cm]{figuras/elementos.png}
+\par
+ Fonte: Traduzido de \citeonline{WERBACH}
+\end{figure}
+
+No campo de \textit{Gamification}, \citeonline{WERBACH} consideram que os elementos de jogo estão organizados em hierarquia (figura 4). Localiza-se na base os que são mais simples, que são os Componentes, que agrupados correspondem a Mecanismos que ao serem organizados trazem as Dinâmicas que abstraem o sujeito para um clima de jogo.
+
+	Analisando de forma mais detalhada, tem-se na base da pirâmide os componentes que representam às formas mais claras para o usuário e mais especificas que os mecanismos podem apresentar. Como por exemplo, avatares, desbloqueio de conteúdo, níveis, etc. Vide Tabela 1.
+
+\begin{table}[H]
+\caption{Tabela de Componentes}
+\begin{tabularx}{\linewidth}{|p{5cm}|X|l|} \hline
+\textbf{Componentes} & \textbf{Descrição} \\ \hline
+
+Conquistas & São formas de dar aos jogadores objetos quando realizam um conjunto de tarefas. \\ \hline
+Avatares & Representação visual do jogador.\\ \hline
+Medalhas & Representação visual das realizações dentro do jogo.\\ \hline
+
+Lutas com Chefes & Um desafio geralmente mais complexo no fim de cada nível a fim de avançar no jogo.\\ \hline 
+Coleções & Geralmente são itens acumulados dentro do jogo.\\ \hline 
+Combates & Duelo entre oponentes do jogo.\\ \hline 
+Desbloqueio de Conteúdo & Possibilidade de desbloquear certo conteúdo dentro do jogo, fazendo algo especifico para este fim.\\ \hline 
+Presentear & A possibilidade de um jogador poder distribuir itens a outros jogadores.\\ \hline 
+Quadro de Líderes & Lista dos jogadores que apresentação as melhores resultados.\\ \hline 
+Níveis & Representação em números do progresso do jogador, que aumenta quando o jogador se torna melhor no jogo.\\ \hline 
+Pontos & São ações onde o jogador recebe pontos, geralmente ligadas a níveis, onde quanto mais pontos, mais nível terá\\ \hline 
+Missões & É uma etapa no jogo, onde o jogador deve fazer algo especifico para geralmente ganhar uma conquista ou recompensa.\\ \hline 
+Gráfico Social & Capacidade de encontrar amigos que também estão no jogo e ser capaz de interagir com eles.\\ \hline 
+Times & Possibilidade de formar equipes com o mesmo objetivo.\\ \hline 
+Bens Virtuais & São os itens dentro do jogo, onde o jogador pode negociar e conseguir mais itens. Geralmente os jogadores podem comprar itens com os próprios itens virtuais (trocas) ou com dinheiro real (cartão de crédito, boleto bancário, etc).\\ \hline 
+
+
+\end{tabularx}
+\\
+
+Fonte: Traduzido de \citeonline{WERBACH}
+\label{Tab:larguracolunas}
+\end{table}
+
+
+
+No segundo nível, onde se encontra as mecânicas de jogo (Tabela 2) que são responsáveis pelo envolvimento do jogador. Estes devem mostrar por onde o jogador deve seguir, e toda a sua jornada, devendo estar alinhada com as dinâmicas para mostrar os avanços dos jogadores ao receber recompensas.
+
+\begin{table}[H]
+\caption{Tabela de Mecânicas}
+\begin{tabularx}{\linewidth}{|p{5cm}|X|l|} \hline
+\textbf{Mecânicas} & \textbf{Descrição} \\ \hline
+
+Desafios & Os objetivos que o jogo define ao jogador. \\ \hline
+Sorte & Os resultados impostos aos jogadores são resultados aleatórios que pode causar surpresa ou incerteza. \\ \hline
+Competição/Cooperação & Possibilidade de criar um sentimento de vitória e/ou derrota\\ \hline
+Retorno (Feedback) & Forma de mostrar ao jogador como eles estão progredindo no jogo. \\ \hline 
+Aquisição de Recursos & Itens que podem ser coletados para o atingimento de determinado objetivo.\\ \hline 
+Recompensas & O beneficio que o jogador recebe ao completar determinada missão no jogo. \\ \hline 
+Transações & É a compra, venda ou troca de algo dentro do jogo entre os próprios jogadores.\\ \hline 
+Turnos & É o momento em que cada jogador deve jogar. Geralmente esta ação é aplicada nos jogos de tabuleiro para aplicar um equilíbrio ao jogo. Já nos jogos de computadores \textit{online}, geralmente eles usam o tempo real, onde todos jogam ao mesmo tempo. \\ \hline 
+Estado de Vítoria & Forma de indicar vencedores no jogo.\\ \hline 
+
+\end{tabularx}
+\\
+
+Fonte: Traduzido de \citeonline{WERBACH}
+\label{Tab:larguracolunas}
+\end{table}
+
+
+No último nível, encontram-se as dinâmicas, que correspondem a um alto nível de abstração (Tabela 3), correspondendo a interação que se cria entre a experiência gamificada e o jogador. Este nível tem a interação com a organização de mecanismos, como por exemplo, criar uma dinâmica de emoções utilizando da sorte ou do estado de vitória (\textit{win state}), que em determinada situação podem gerar um diferencial na emoção do jogo.
+
+\begin{table}[H]
+\caption{Tabela de Dinâmicas}
+\begin{tabularx}{\linewidth}{|p{5cm}|X|l|} \hline
+\textbf{Dinâmicass} & \textbf{Descrição} \\ \hline
+
+Restrições & É a limitação que cada jogador tem dentro do jogo. \\ \hline
+Emoções & É a capacidade de criar diferentes tipos de emoções dentro do jogo, tanto felicidade quando se ganha algo ou tristeza quando se perde, estimulando o jogador a continuar jogando. \\ \hline
+Narrativa & É a composição de ideias e integração como o jogo é mostrado não precisando ser precisamente um roteiro. \\ \hline
+Progressão & É a conceito de dar ao jogador a sensação de progredir no jogo. \\ \hline 
+Relacionamentos & É o maneira como são feitas as interações entre os jogadores, amigos ou oponentes. \\ \hline 
+
+
+\end{tabularx}
+\\
+
+Fonte: Traduzido de \citeonline{WERBACH}
+\label{Tab:larguracolunas}
+\end{table}
+
+\section{Framework de \textit{Gamification}}
+
+Desta forma \citeonline{WERBACH} desenvolveram um \textit{framework} de seis passos para auxiliar na implementação de \textit{gamification} em um sistema.
+\begin{enumerate}
+\item Definir objetivos de negócio: estes são os objetivos que você quer que o sistema gamificado realize. Isso é diferente das coisas que o jogador pode fazer dentro do jogo (ex.: pontos, medalhas, etc);
+\item Delinear o comportamento esperado: são as coisas que o sistema espera que o jogador faça;
+\item Descrever seus jogadores: identificar informações sobre os jogadores, demograficamente (idade, localização, etc.), informações sobre o comportamento deles, o que eles gostariam de comprar/fazer, o que motiva e desmotiva os jogadores;
+\item Definir ciclos de atividade: a sugestão é que o jogador através do exercício de seus próprios erros sinta-se estimulado a tentar outra vez e se manterem motivados. Existem dois tipos de ciclos de atividade que são o Ciclo de Engajamento (Figura 5), onde as ações do usuário resultam em feedback que geram motivações, mas há o risco do jogador ficar entediado, então o segredo está no feedback; e a Escada de Progressão (Figura 6) onde a dificuldade aumenta conforme o jogador vai aprendendo, geralmente começa fácil e termina difícil. 
+\begin{figure}[H]
+    \centering
+\caption{Ciclo de Engajamento}
+\includegraphics[width=10cm]{figuras/loop.png}
+\par
+ Fonte: adaptado de \citeonline{WERBACH}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+\caption{Escada de Progressão}
+\includegraphics[width=12cm]{figuras/progression.png}
+\par
+ Fonte: adaptado de \citeonline{WERBACH}
+\end{figure}
+
+\item Divertimento do sistema: definir uma proposta de deixar o sistema gamificado divertido, fazendo com que os jogadores voluntariamente descubram e se motivem a utiliza-lo;
+\item Implantar as ferramentas apropriadas: definir quais os melhores elementos (dinâmicas, mecânicas e componentes) deve-se utilizar, dependendo do seu público alvo e o que o sistema quer oferecer a eles.
+\end {enumerate}
+
+\section{\textit{Gamification} na Educação}
+
+Para a educação, \textit{gamification} funciona do seguinte modo: o jogador/aprendiz se diverte em um jogo e vai adquirindo novos conhecimentos ao mesmo tempo. A cada acerto, ganha medalhas e o direito de passar para o próximo nível. E a cada novo nível, novos conceitos são exibidos.
+
+Desta forma \citeonline{KAPP} consideram que na educação o \textit{gamification} é bem indicado quando se pretende:
+\begin{itemize}
+\item Motivar os estudantes a progredir currículo;
+\item Motivar os estudantes, envolvendo-os no conteúdo curricular;
+\item Influenciar o comportamento do estudante em sala de aula;
+\item Guiar os estudantes para que possam ser inovadores;
+\item Encorajar os estudantes para que possam desenvolver ou adquirir conhecimentos por conta própria;
+\item Ensinar novos conteúdos.
+
+\end{itemize}
+
+
+\chapter{Metodologia}
+Este trabalho tem por objetivo explorar com maiores detalhes os aplicativos já existentes na área de \textit{gamification} para o ensino de língua inglesa, e elaborar um aplicativo usando as técnicas de \textit{gamification} voltado para o ensino de língua inglesa com o \textit{m-learning}, além de avaliar a sua usabilidade.
+
+
+\section{Classificação da Pesquisa}
+Segundo \citeonline{VERGARA}, os tipos de pesquisa podem ser definidos por dois critérios fundamentais: quanto aos fins e quanto aos meios.
+
+	Quanto aos fins, este trabalho pode ser classificado por exploratória, pois será desenvolvido com o objetivo de proporcionar visão geral, de tipo aproximativo, acerca de determinado fato. É realizado quando o tema escolhido é pouco explorado e torna-se difícil sobre ele formular hipóteses precisas e operacionalizáveis. Muitas vezes servem como a primeira etapa de uma investigação mais ampla \cite{GIL}.
+
+	Quanto aos meios, à abordagem do problema utilizou um viés qualitativo, que de acordo com \citeonline{SILVAMENEZES}, “considera que há uma relação dinâmica entre o mundo real e o sujeito, isto é, um vínculo indissociável entre o mundo objetivo e a subjetividade do sujeito que não pode ser traduzido em números”.
+	Esta pesquisa tomou um viés qualitativo de pesquisa porque as avaliações dos aplicativos para \textit{m-learning} podem estar carregadas de crenças e valores do pesquisador, mas que podem ser suavizados com a definição de um desenho de pesquisa que possua rigor científico e garante a validade interna do estudo.
+
+\section{Levantantamento de Aplicativos \textit{M-Learning}}
+
+	Atualmente, número de aplicativos cresce em um ritmo bastante acelerado nas lojas virtuais como a \textit{Google Play Store (Android), Windows Phone Store (Windows Phone)} e a \textit{Apple app Store (iOS)}, sendo essas as principais plataformas. Na Figura 7, podem-se observar alguns números sobre essas três principais plataformas
+
+\begin{figure}[H]
+    \centering
+\caption{Principais Sistemas Operacionais Móveis}
+\includegraphics[width=10cm]{figuras/so.png}
+\par
+ Fonte: \cite{IDC}
+\end{figure}
+
+Nesta seção será mostrada como foi feito o levantamento dos aplicativos que serão usados no presente estudo.
+Como pode ser observado, atualmente há uma imensa quantidade de  plataformas e aplicativos para dispositivos móveis, desta forma para o presente trabalho foi feito o levantamento de aplicativos de \textit{m-learning e gamification} voltados para o ensino de idiomas.
+
+O presente trabalho utilizou do sistema operacional Android devido ao fato de ser uma plataforma aberta e com uma maior gama de usuários, como pode ser observado na Figura 7.
+ 
+	Então, para o levantamento dos aplicativos que formaram a amostra do estudo, foram seguidos alguns procedimentos e etapas:
+\begin{enumerate}
+\item Pesquisas usando palavras m-learning e suas variações: “ensino”, “educação”, “education”, “idiomas”, de forma separada como também em conjunto com a palavra \textit{“gamification”}, além de palavras como “sistema operacional” e “linguagem de programação”;
+\item A pesquisa foi realizada nos portais acadêmicos: ERIC \textit{(Education Resources Information Center)}, Portal CAPES (Coordenação de Aperfeiçoamento de Pessoal de Nível Superior), \textit{ScienceDirect}, Google Scholar, Scielo, IEEE (\textit{Institute of Electric and Electronic Engineers}) e ACM (\textit{Association for Computing Machinery});
+\item Cada pesquisa realizada gerava uma lista em torno de 9 a 359 artigos com aplicativos, porém nem todos eram realmente de m-learning ou seguiam uma proposta de \textit{gamification};
+\item Para filtrar os resultados foram descartados inicialmente artigos pelo título, e posteriormente descartados pela leitura do resumo e/ou conclusão;
+\item Ao final do filtro, sobraram 12 aplicativos voltados para o ensino de idiomas com \textit{m-learning} que usam \textit{gamification}, mas apenas 4 eram para dispositivos Android, e 1 deles não estava disponível para \textit{download}, sobrando então apenas 3 aplicativos para a análise deste trabalho.
+\end{enumerate}
+
+Por fim, os aplicativos selecionados para este trabalho foram: Busuu, Duolingo, LinguaLeo e Word Learning-CET6 (sendo este ultimo descartado por não estar disponível para \textit{download}).
+
+
+
+
+
+
+
+\chapter{Avaliação dos Aplicativos}
+Este capítulo procurou avaliar os aplicativos de m-learning sobre o ensino de línguas inglesa e que adotam técnicas de \textit{gamification}.
+
+Como foi dito nos capítulos anteriores, nesta avaliação foi utilizada o \textit{framework} de \citeonline{WERBACH}, pois este apresenta uma modelo mais esquematizada das técnicas de \textit{gamification}, permitindo a maior e mais detalhada analise dos aplicativos de \textit{m-learning}. Vale ressaltar que o próprio autor deste trabalho instalou e testou cada um dos aplicativos selecionados para esta avaliação.
+
+	Desta forma, as próximas etapas deste trabalho mostrarão as avaliações dos aplicativos selecionados utilizando do \textit{framework} de \citeonline{WERBACH}.
+
+\section{Avaliação do Aplicativo Busuu}
+	O aplicativo Busuu é gratuito, com acesso a 20 unidades de aprendizagem (5 para cada nível). O conteúdo completo chamado de \textit{“premium”} com mais de 3.000 palavras e frases-chave, unidade de gramática, 150 diálogos e centenas de exercícios interativos pode ser facilmente comprado sem sair do aplicativo.
+
+\subsection{Objetivo de Negócio}
+	O objetivo de negócio do aplicativo é ensinar ao usuário gramática de outros idiomas e a construir frases e não apenas decorá-las. Ao final de cada lição o usuário terá aprendido e aplicado o que aprendeu. Na Figura 8 é mostrado a tela inicial do aplicativo onde contém as primeiras lições em que o usuário pode navegar, também é mostrado a opção de \textit{download} da lição para o aprendizado \textit{off-line}, disponível apenas na versão \textit{premium}.
+
+\begin{figure}[H]
+    \centering
+\caption{Tela inicial - Busuu}
+\includegraphics[width=6cm]{figuras/inicialbusuu.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Comportamentos Esperados}
+	Sobre os comportamentos que o aplicativo deseja esperar do usuário, a aplicação exibe ao usuário qual modalidade de exercícios podem ser praticados, como lições sobre “apresentação” e “sobre mim”.
+
+\subsection{Jogadores}
+Na descrição dos seus jogadores, o aplicativo não informa qual seu público-alvo, desta forma acredita-se que pode ser utilizado por qualquer usuário que deseje aprender outro idioma.
+
+\subsection{Ciclo de Atividades}
+	Na definição dos ciclos de atividades a motivação é feita por lição completa, onde os ícones completos ficam azuis dando a lição como finalizada, como pode ser visto a seguir e a motivação ao usuário é feita pela interação com outras pesoas ao redor do mundo, podendo auxilia-las em suas atividades como é mostrado nas Figura 9 e 10.
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização de lição finalizada - Busuu}
+\includegraphics[width=6cm]{figuras/ciclobusuu.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+\caption{Tela de Interação - Busuu}
+\includegraphics[width=6cm]{figuras/interacaobusuu.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+\subsection{Divertimento}
+	Neste aplicativo não foi identificado nenhuma forma de divertimento.
+
+
+\subsection{Ferramenta Apropriada}
+Quanto a correta utilização da ferramenta, o aplicativo não apresentou esta caracteristica.
+
+\subsection{Elementos de \textit{Gamification} no Busuu}
+	Foram identificados vários elementos de \textit{gamification} presente no aplicativo Busuu, como é mostrado na Figura 11.
+
+
+
+
+\begin{figure}[H]
+    \centering
+\caption{Elementos de \textit{Gamification} - Busuu}
+\includegraphics[width=12cm]{figuras/elementosbusuu.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\section{Avaliação do Aplicativo Duolingo}
+O aplicativo Duolingo é um aplicativo completamente gratuito que utiliza uma plataforma \textit{crowdsourcing} tradução de textos. Uma de suas características são suas lições em partes, pelo qual em modo repetitivo os usuários fixam o conteúdo apresentado. 
+	
+Para utilizar o aplicativo o usuário deve configurar um perfil, escolher o idioma que deseja aprender, definir suas metas semanais e iniciar os estudos.
+
+\subsection{Objetivo de Negócios}
+O objetivo do Duolingo é ensinar a ler, escrever, ouvir e falar, com base em uma árvore de idioma dividida em níveis: básico, médio e avançado. Cada um deles têm vários módulos, como saudações, comidas, animais, entre outros. E cada uma dessas categorias tem um conjunto de questões, onde o usuário deve traduzir palavras escrevendo, selecionando opções e até mesmo falando, pois o aplicativo usa o fone dos aparelhos para captar a voz e testar a pronúncia. Há também alguns atalhos, testes de nivelamento para avançar etapas, caso já se tenha um bom conhecimento. Nas figuras a seguir é ilustrado a tela inicial (Figura 12) e Atalhos (Figura 13).
+
+\begin{figure}[H]
+    \centering
+\caption{Tela Inicial do Duolingo}
+\includegraphics[width=6cm]{figuras/inicialduolingo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+\caption{Atalho para avanço de nível - Duolingo}
+\includegraphics[width=6cm]{figuras/atalhoduolingo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Comportamentos Esperados}
+	O usuário visualiza a ordem em que precisa seguir para completar os diferentes módulos, com novos módulos tornando-se ativo apenas quando o usuário termina o módulo anterior. Este é também o caso com os ensinamentos individuais dentro de cada módulo.
+
+\subsection{Jogadores}
+
+Na descrição dos seus jogadores, o aplicativo não informa qual seu público-alvo, coleta apenas o nome do usuário para poder identificá-lo, desta forma, pode ser utilizado por qualquer usuário que deseje aprender outro idioma.
+
+\subsection{Ciclos de Atividades} 
+	Na definição dos ciclos de atividades, a cada lição completa, o ícone fica amarelo e ícones azuis aparecem para serem concluídos (Figura 14). É necessário completar a lição 1 para ser capaz de progredir para a lição 2, e assim por diante. E ao tentar aprender uma lição fora do ciclo, a seguinte mensagem é apresentada.
+\begin{figure}[H]
+    \centering
+\caption{Mensagem de proibição - Duolingo}
+\includegraphics[width=6cm]{figuras/proibicaoduolingo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Divertimento}
+	Sobre o divertimento, o aplicativo envolve educação com jogos, inserindo 3 corações como vidas a cada lição, que a cada erro são perdidas e ao finalizar cada lição o usuário ganha prêmios que servem para comprar mais vidas no aplicativo (Figuras 15). Também há a funcionalidade de localizar amigos que estão no aplicativo e iniciar uma competição entre eles (Figura 16).
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização de Conquista e Compras de Itens - Duolingo}
+\includegraphics[width=8cm]{figuras/conquistaduolingo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização de Competição - Duolingo}
+\includegraphics[width=6cm]{figuras/competicaoduolingo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+\subsection{Ferramenta Apropriada}
+	Quanto a correta utilização da ferramenta, o aplicativo não apresentou esta caracteristica.
+
+\subsection{Elementos de \textit{Gamification} no Duolingo}
+	Foram identificados vários elementos de \textit{gamification} presente no aplicativo Duolingo, como é mostrado na Figura 17.
+
+\begin{figure}[H]
+    \centering
+\caption{Elementos de \textit{Gamification} - Duolingo}
+\includegraphics[width=12cm]{figuras/elementosduolingo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+
+\section{Avaliação do Aplicativo Lingualeo}
+O Lingualeo é um aplicativo interativo e gamificado para o aprendizado e prática do Inglês, e seguindo um instrutor representado por um leão, os usuários irão explorar e aprender um enorme vocabulário de palavras em inglês, acompanhadas pela tradução, pelo áudio com a pronúncia e uma foto ilustrativa. O aplicativo também possui uma versão premium, onde mais funcionalidades são desbloqueadas, além de poder obter um certificado ao final do curso.
+
+\subsection{Objetivos de Negócio}
+O objetivo de negócio do aplicativo Lingualeo é que os usuários possam consultar, direto de seus smartphones, um dicionário personalizado, treinos para memorização e inúmeros exercícios para aprender novas palavras da língua inglesa.
+Na Figura 18 é ilustrado a tela inicial do aplicativo Lingualeo.
+
+\begin{figure}[H]
+    \centering
+\caption{Tela Inicial Lingualeo}
+\includegraphics[width=6cm]{figuras/iniciallingualeo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Comportamentos Esperados}
+
+O aplicativo Lingualeo mostra apenas algumas tarefas por turnos, fazendo com que o usuário realize todas elas para que novas tarefas possam aparecer, fazendo assim com que o usuário aprenda todo o conteúdo.
+
+\subsection{Jogadores}
+
+Desde o início do aplicativo, é solicitada a idade, sexo e interesses (Figura 19), um teste inicial para definir o nível de gramática (Figura 20) e o qual a meta que o usuário deseja conseguir com o aplicativo (Figura 21). Segundo \citeonline{MORAES}, desta forma, o aplicativo consegue criar um método personalizado para cada usuário, fazendo com que o ensino seja mais eficiente. 
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização de Interesses - Lingualeo}
+\includegraphics[width=8cm]{figuras/interesseslingualeo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização da Gramática - Lingualeo}
+\includegraphics[width=8cm]{figuras/gramaticalingualeo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização Metas - Lingualeo}
+\includegraphics[width=8cm]{figuras/metalingualeo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Ciclos de Atividades}
+Não foi identificado ciclos de atividade neste aplicativo.
+
+\subsection{Divertimento}
+	Sobre o divertimento, a cada tarefa completa, além das almôndegas que servem para poder adicionar novas palavras ao seu dicionário, o usuário também ganha experiência (XP) que somadas vão virando níveis, quanto mais experiência, mais nível o jogador terá, como é mostrado na Figura 22.
+Também há a possibilidade de convidar amigos que estão para que juntos possam competir aprendendo inglês, na Figura 23 é ilustrado esta tela.
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização Tarefa Completa e Ganho de XP - Lingualeo}
+\includegraphics[width=8cm]{figuras/completalingualeo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização Convidar Amigos - Lingualeo}
+\includegraphics[width=6cm]{figuras/amigoslingualeo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Ferramenta Apropriada}
+	Ao clicar em perfil, o usuário verá o nível e a quantidade de pontos para alcançar o próximo nível, e logo abaixo o seu nível de saciedade que varia de 0 a 100\%, que é a satisfação de estudo diário, que foi definido na tela de personalização, conforme ilustrado na Figura 24.
+
+\begin{figure}[H]
+    \centering
+\caption{Visualização Perfil - Lingualeo}
+\includegraphics[width=6cm]{figuras/perfillingualeo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Elementos de \textit{Gamification} no Lingualeo}
+
+	Foram identificados vários elementos de \textit{gamification} presente no aplicativo Lingualeo, como é mostrado na Figura 25.
+
+\begin{figure}[H]
+    \centering
+\caption{Elementos de \textit{Gamification} - Lingualeo}
+\includegraphics[width=12cm]{figuras/elementoslingualeo.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\section{Considerações sobre as Avaliações dos Aplicativos}
+Analisando os aplicativos encontrados, constatou-se que nenhum deles cumpriu todas as regras do \textit{framework} de \citeonline{WERBACH}. A figura a seguir ilustra o resumo dos aplicativos em relação ao \textit{framework de gamification}. Na Figura 26 é mostrado o resumo de elementos de \textit{gamification} encontrados nos aplicativos avaliados.
+\begin{figure}[H]
+    \centering
+\caption{Resumo de Elementos de \textit{Gamification}}
+\includegraphics[width=12cm]{figuras/resumo-apps.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+\chapter{Inglês+ - Um \textit{software} educacional voltado para o ensino de língua inglesa usando \textit{framework de gamification}}
+Este capítulo buscou elaborar um protótipo de \textit{software} educacional sobre o ensino de língua inglesa utilizando do \textit{framework de gamification} de \citeonline{WERBACH}.
+
+As próximas seções deste capítulo mostrarão o software educacional utilizando todos os requisitos do \textit{framework de gamification}.
+
+
+\section{Descrição do Protótipo}
+
+A proposta do aplicativo Inglês+ é um aplicativo totalmente grátis e gamificado com acesso a diferentes níveis de aprendizagem para o ensino de língua inglesa. O aplicativo Inglês+ foi desenvolvido em HTML5 com linguagem de programação JavaScript e CSS3, além de outros recursos como JQuery.
+
+Para poder utilizar esta aplicação é necessário possuir um smartphone com o sistema operacional Android, além de possuir uma conexão com a internet seja por rede wireless ou 3G.
+
+O protótipo foi elaborado para qualquer pessoa que queira aprender a lingua inglesa, visando adquirir um novo conhecimento de uma forma gamificada.
+
+\section{Processo de Software}
+Neste protótipo de software foi utilizado o modelo cascata que propõe que cada atividade fundamental do processo de desenvolvimento do software seja tratada como uma fase de processo separada, conforme mostrado na Figura 27. Os principais estágios do modelo cascata são os seguintes:
+
+\begin{itemize}
+\item análise e definição de requisitos;
+\item projeto de sistema e software;
+\item implementação e teste de unidade;
+\item integração e teste de sistema;
+\item operação e manutenção.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+\caption{Modelo de Processo em Cascata}
+\includegraphics[width=14cm]{figuras/cascata.png}
+\par
+ Fonte: adaptado de \citeonline{BOOKS1}
+\end{figure}
+
+Essa divisão é clara e cada etapa do proceso depende do resultado da etapa anterior para continuar com o ciclo.
+As principais vantagens deste modelo são a documentação produzida em cada etapa e a sua compatibilidade com outros modelos de processo de engenharia. Seu maior problema é a falta de flexibilidade na divisão dos estágios, o que dificulta reagir as mudanças de requisitos do usuário.
+
+
+\section{Avaliação do Protótipo Inglês+}
+\subsection{Objetivos de Negócio}
+O objetivo de negócio deste aplicativo é ensinar a ler, escrever e entender de uma forma não cansativa e interessante para o usuário com inúmeros exercícios para o aprendizado da língua inglesa. A Figura 27 contém a tela inicial do aplicativo.
+
+\begin{figure}[H]
+    \centering
+\caption{Tela Inicial - Inglês+}
+\includegraphics[width=12cm]{figuras/inicial-ingles+.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+\subsection{Comportamentos Esperados}
+O usuário visualiza no aplicativo a ordem das lições que ele deve seguir, desta forma o usuário deverá finalizar uma lição para que a próxima seja desbloqueada e assim sucessivamente e caso tente acessar uma lição fora do fluxo, a mensagem da Figura 28 é mostrada.
+
+\begin{figure}[H]
+    \centering
+\caption{Bloqueio de Lição - Inglês+}
+\includegraphics[width=13cm]{figuras/bloqueio-ingles.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Jogadores}
+Desde o início do aplicativo, é solicitado ao usuário que responda um pequeno questionário, para desta forma conhecer um pouco sobre o jogador, como nome, idade, sexo, conhecimento da língua inglesa e o quanto se deseja aprender no aplicativo, para que seja elaborado uma metodologia de ensino mais adequada a cada tipo de usuário, com questões mais difícies ou mais fácies \cite{MORAES}. Na Figura 29 pode ser visto esta tela.
+
+\begin{figure}[H]
+    \centering
+\caption{Cadastro e Questionário de Identificação - Inglês+}
+\includegraphics[width=12cm]{figuras/questionario-ingles+.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Ciclo de Atividades}
+Para manter o usuario motivado a continuar aprendendo, a lição disponivel para estudo estará azul e a cada lição completa o icone da lição ficará verde indicando que já foi finalizada e o usuário receberá como recompensa algumas "moedas de ouro" e "Experiência" por esta conquista. E no final da lição, o usuário receberá estrelas por seu desempenho, que diminuirá caso perca vidas. A Figura a 30 contém essa tela.
+
+\begin{figure}[H]
+    \centering
+\caption{Ciclo de Atividades - Inglês+}
+\includegraphics[width=12cm]{figuras/ciclo-ingles+.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+\subsection{Divertimento}
+O divertimento do aplicativo contém um cenário de jogos nas lições, inserindo uma quantidade de vezes (vidas) em que o usuário pode errar antes que seja eliminado naquele momento daquela determinada lição e podendo usar as "moedas de ouro" para comprar mais vidas e desbloquear conteúdo do jogo, conforme é ilustrado na Figura 31.
+
+\begin{figure}[H]
+    \centering
+\caption{Cenário de Jogos e Loja de Itens - Inglês+}
+\includegraphics[width=12cm]{figuras/divertimento-ingles+.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+\subsection{Ferramenta Apropriada}
+O aplicativo exibe o nível em que o usuário se encontra e ao clicar no perfil será ilustrado o quanto de experiência é necessária para o próximo nível e o quanto de atividade ele deve exercitar naquele dia para que possa alcançar seu objetivo diário podendo alterar este objetivo nas configurações, conforme ilustrado na Figura 32.
+
+\begin{figure}[H]
+    \centering
+\caption{Menu, Perfi e Configurações - Inglês+}
+\includegraphics[width=12cm]{figuras/perfil-ingles+.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+\subsection{Elementos de \textit{Gamification} no Inglês+}
+	Foram identificados vários elementos de \textit{gamification} presente no protótipo de aplicativo Inglês+, como é mostrado na Figura 33.
+
+
+
+
+\begin{figure}[H]
+    \centering
+\caption{Elementos de \textit{Gamification} - Inglês+}
+\includegraphics[width=12cm]{figuras/elementosingles.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+
+
+
+\chapter{Métodos para avaliação de usabilidade}
+Segundo \citeonline{PREECE}, usabilidade é um conceito muito importante na interação homem computador (IHC) e enfatiza a importancia em fazer sistemas que apresentem facilidades para o aprendizado e utilização do usuário.
+
+Para \citeonline{NIELSEN}, usabilidade é um atributo de qualidade que avalia a facilidade de uso de uma interface, que é definida em cinco componentes:
+
+\begin{enumerate}
+\item Aprendizagem: Como é fácil para os usuários realizarem tarefas básicas na primeira vez que encontrarem o design?
+\item Eficiência: Uma vez que os usuários aprenderam o projeto, com que rapidez eles podem realizar tarefas?
+\item Memorização: Quando os usuários retornam ao projeto após um período de não usá-lo, com que facilidade eles podem restabelecer a proficiência?
+\item Erros: quantos erros os usuários fazem, quão severos são esses erros e quão facilmente eles podem se recuperar dos erros?
+\item Satisfação: Como é agradável usar o design?
+\end{enumerate}
+
+Ainda de acordo com \citeonline{NIELSEN2}, com apenas 15 usuários já é possível descobrir todos os problemas de usabilidade de um sistema. A Figura 33 ilustra esse resultado.
+
+\begin{figure}[H]
+    \centering
+\caption{Quantidade de Testadores}
+\includegraphics[width=13cm]{figuras/numtestadores.png}
+\par
+ Fonte: adaptado de \citeonline{NIELSEN2}
+\end{figure}
+
+\section{\textit{System Usability Scale} (SUS)}
+A escala SUS fornece uma ferramenta rápida e confiável para medir a usabilidade. Foi desenvolvida inicialmente em 1986, por John Brooke, no laboratório da \textit{Digital Equipment Corporation}, no Reino Unido.
+
+Desta forma permite avaliar uma grande variedade de produtos e serviços, incluindo \textit{hardware, software}, dispositivos móveis, sites e aplicativos.
+
+Esta escala consiste em um questionário de 10 itens com cinco opções de respostas para os respondentes em uma escala \textit{Likert}\footnote{Criada em 1932, pelo psicólogo norte-americano Rensis Likert, a escala \textit{Likert} é uma escala de resposta psicométrica utilizada na maioria das vezes em pesquisas de opinião de clientes.} que varia de Discordo Totalmente a Concordo Totalmente. Na Figura 34 é mostrado um exempo de questão do SUS.
+
+\begin{enumerate}
+\item Eu acho que gostaria de usar esse sistema com frequência.
+\item Eu acho o sistema desnecessariamente complexo.
+\item Eu achei o sistema fácil de usar.
+\item Eu acho que precisaria de ajuda de uma pessoa com conhecimentos técnicos para usar o sistema.
+\item Eu acho que as várias funções do sistema estão muito bem integradas.
+\item Eu acho que o sistema apresenta muita inconsistência.
+\item Eu imagino que as pessoas aprenderão como usar esse sistema rapidamente.
+\item Eu achei o sistema atrapalhado de usar.
+\item Eu me senti confiante ao usar o sistema.
+\item Eu precisei aprender várias coisas novas antes de conseguir usar o sistema.
+
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+\caption{Exemplo de questão do SUS}
+\includegraphics[width=13cm]{figuras/sus.png}
+\par
+ Fonte: \cite{BROOKE}
+\end{figure}
+
+Segundo \citeonline{TENORIO}, é possivel reconhecer os componentes de qualidade indicados por \citeonline{NIELSEN} nas seguintes questões do SUS:
+
+
+\begin{itemize}
+\item Aprendizagem: questões 3, 4, 7 e 10;
+\item Eficiência: questões 5, 6 e 8;
+\item Memorização: questão 2;
+\item Erros: questão 6;
+\item Satisfação: questões 1, 4 e 9.
+
+\end{itemize}
+
+O questionário SUS foi escolhido como instrumento de avaliação da usabilidade deste trabalho por ser um instrumento gratuito e que devido ao seu pequeno número de questões facilitaria a aderência à pesquisa.
+
+\subsection{Pontuação SUS}
+O SUS produz um único número representando uma medida composta da usabilidade global do sistema estudado. 
+
+\begin{itemize}
+\item Para os itens ímpares, deve-se subtrair 1 da pontuação que o usuário respondeu.
+\item Para as itens pares, deve-se subtrair a resposta de 5. Ou seja, se o usuário respondeu 2, deve-se contabilizar 3. Se o usuário respondeu 4, deve-se contabilizar 1.
+\item Agora deve-se somar todos os valores das dez perguntas, e multiplicar por 2.5 para obter o resultado final da SUS.
+
+
+\end{itemize}
+
+
+
+\section{Resultados}
+O objetivo da aplicação do questionário é identificar o nível de satisfação do usuário com a usabilidade do aplicativo Inglês+. Aplicou-se o questionário a um grupo de pessoas de diferentes idades, onde 20 voluntários responderam o questionário através do formulário \textit{online} do \textit{Google Forms}.
+
+Para realizar o teste de usabilidade foi solicitado aos voluntários testar o aplicativo Inglês+, explorar as funções e finalizar uma lição. Ao final, foi solicitado aos voluntários responder ao questionário para finalizar a pesquisa.
+
+Os voluntários que responderam a este questionário tinham idades que variam de 18 a 30 anos, onde a grande maioria possuiam conhecimentos da língua inglesa e que disseram que seriam mais motivados a aprender um novo idioma em um cenário gamificado.
+
+Os dados resultantes da aplicação desse questionário \textit{online} foi armazenado em uma planilha eletrônica do \textit{Excel}. A planilha foi armazenada em um servidor de armazenamento de arquivos na nuvem, o apêndice B contém esses resultados.
+
+Ao obter todos as respostas dos voluntários no questionário, foi possível calcular a pontuação e a média do SUS. 
+
+A média da pontuaçao foi baseada em estudos feitos por \citeonline{BANGOR} que constatou a pontuação de 70 como média do SUS e que foi apresenado em diferentes aplicações. A Figura 35 contém o resultado da pesquisa de \citeonline{BANGOR}
+
+\begin{figure}[H]
+    \centering
+\caption{Resultados Bangor}
+\includegraphics[width=16cm]{figuras/mediabangor.png}
+\par
+ Fonte: \cite{BANGOR}
+\end{figure}
+
+Considerando a média de 70 pontos obtida por \citeonline{BANGOR}, pode-se observar na Figura 36, que apenas 2 itens não atingiram a média estipulada por Bangor: \textit{Eu acho que o sistema apresenta muita inconsistência} e \textit{Eu acho que várias funções do sistema estão muito bem integradas}, devido ao fato do aplicativo ainda ser um protótipo e não estar completamente finalizado. 
+
+\begin{figure}[H]
+    \centering
+\caption{Média SUS}
+\includegraphics[width=16cm]{figuras/mediasus.png}
+\par
+ Fonte: Próprio autor
+\end{figure}
+
+Desta forma, para avaliar as qualidades propostas nas questões de \citeonline{NIELSEN}, foi utilizada a relação com a SUS proposta por \citeonline{TENORIO}. A seguir é mostrado a avaliação:
+
+\begin{itemize}
+\item Aprendizagem: a facilidade de aprendizagem está representada nos itens 3, 4, 7 e 10. A média do resultado dessas questões é 88,12, desta forma pode-se concluir que os usuários apresentaram facilidade de aprender a utiizar o aplicativo;
+\item Eficiência: a eficiência do sistema está representado nos itens 5, 6 e 8. A média do resultado dessas questões é 74,14, desta forma pode-se concluir que os usuários consideram o aplicativo eficiente mesmo que os itens 5 e 6 estejam abaixo da média estipulada por \citeonline{BANGOR};
+\item Memorização: a facilidade de memorização do sistema é avaliada pela questão 2. O resultado dessa questão é 78,75, desta forma pode-se concluir que os usuários consideram o aplicativo satisfatório em cada item;
+\item Erros: a minimização dos erros e inconsistências é avaliado pela questão 6. O resultado dessa questão é 67,5, este foi o único item que ficou abaixo da média e isto requer atenção;
+\item Satisfação: a satistação dos usuários está representado nos itens 1, 4 e 9. A média do resultado dessas questões é 81,66, desta forma pode-se concluir que os usuários consideram-se satisfeitos com o aplicativo.
+
+\end{itemize}
+
+
+
+
+
+
+
+\chapter{Conclusões}
+
+Neste capítulo são apresentados as considerações finais e as sugestões de trabalhos futuros.
+
+
+\section {Considerações Finais}
+
+
+Através desse estudo, foi possível verificar a importância da utilização de \textit{gamification} para propiciar melhor aprendizado, e motivar usuários a adquirir conhecimentos por contra própria.
+
+Ao final deste trabalho, foi posível aprofundar o conhecimento sobre \textit{gamification} e avaliar os aplicativos já existentes na área que utilizam essa técnica. Porém, estes aplicativos não atendiam a todos os itens estabelecido no \textit{framework de gamification}, desta forma foi desenvolvido um protótipo de aplicativo para o ensino de língua inglesa que utilize todos os itens estabelecidos no \textit{framework} de \citeonline{WERBACH}.
+
+Neste trabalho, foi realizado uma avaliação usando o SUS com 20 participantes voluntários que permitiu por meio de uma métrica afirmar que o protótipo Inglês+ atende aos critérios: facilidade  de  aprendizagem  do  sistema  (88,12), eficiência  do  sistema  (74,14), facilidade   de memorização (78,75), satisfação  dos  usuários  (81,66), deixando de atender apenas a 1 item: baixo nível de incosistências (67,5) devido ao fato de ainda ser um protótipo e não estar completamente finalizado.
+
+Como resultado obtivemos uma aceitação do protótipo do aplicativo Inglês+ com a pontuação de 80,75. Estes resultados foram comparados com a média de avaliação de usabilidade definida por \citeonline{BANGOR}. 
+
+Por fim, de acordo com o estudo realizado, foi possível atender ao objetivo geral e os objetivos específicos. Embora a usabilidade tenha sido avaliada de forma positiva, foi possível identificar pontos de melhorias para o item de minimização de erros e inconsistências para futuras atualizações que contribuirão para uma maior usabilidade.
+
+\section {Trabalhos Futuros}
+Este protótipo foi desenvolvido para o sistema operacional Android, é indicado o desenvolvimento e implementação deste aplicativo e também é indicado o desenvolvimento para \textit{Windows Phone} e IOS visto que são outros grandes sistemas operacionais no mercado e não podem ser desconsiderados. 
+
+Outro ponto que pode ser abordado é a avaliação de aprendizagem para comparar o desempenho dos usuários antes e depois de utilizarem o aplicativo e assim verificar se o aplicativo Inglês+ contribui ou não para a melhoria da aprendizagem de língua inglesa.
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+
+
+% Imprime uma página indicando o início dos apêndices
+\partapendices
+
+
+\chapter{Questionário Completo}
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=17cm]{figuras/1.png}
+\par
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=17cm]{figuras/2.png}
+\par
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=17cm]{figuras/3.png}
+\par
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=17cm]{figuras/4.png}
+\par
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=17cm]{figuras/5.png}
+\par
+
+\end{figure}
+\chapter{Planilha com resultados do questionário}
+
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=11cm]{figuras/6.png}
+\par
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=11cm]{figuras/7.png}
+\par
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=11cm]{figuras/8.png}
+\par
+
+\end{figure}
+
+
+
+\chapter{Lista de Aplicativos Encontrados}
+% ---
+\begin{figure}[H]
+    \centering
+
+\includegraphics[width=12cm]{figuras/tabela.png}
+\par
+
+\end{figure}
+
+
+\end{apendicesenv}
+% ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+% --- \begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+% --- \partanexos
+
+% ---
+
+
+% --
+% --- \end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+\phantompart
+\printindex
+%---------------------------------------------------------------------
+
+\end{document}
